@@ -23,6 +23,7 @@ const config = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
+            title: 'CodeCastle'
         }),
 
         // Add your plugins here

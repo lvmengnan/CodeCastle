@@ -267,3 +267,187 @@ class Greeterb {
 }
 
 new Greeterb('xxxx');
+
+// 接口和类型别名
+interface A {
+  a: number,
+  b: string,
+  c: boolean
+}
+
+type B = {
+  a: number,
+  b: number,
+  d: number
+}
+
+// 联合类型
+type C = A | B;
+
+const c: C = {
+  a: 10,
+  b: 'aaa',
+  c: true
+}
+
+// 交叉类型
+interface E {
+  a: number,
+  c: boolean
+}
+
+type F = {
+  a: number,
+  d: number
+}
+
+type D = E & F;
+
+const d: D = {
+  a: 10,
+  c: true,
+  d: 20
+}
+
+// type 和 interface 的区别
+// 1. type 和 interface 都可以声明函数和对象类型；
+type Point = {
+  x: number,
+  y: number
+}
+
+type SetPoint = (x: number, b: number) => Point;
+
+interface Point2 {
+  x: number;
+  y: number;
+}
+
+interface SetPoint2 {
+  (x: number, y: number): Point2
+}
+
+// 2. type 还可以声明原始类型，联合类型，元祖类型
+type Name = string;
+type Sex = 'man' | 'woman';
+type tuple = [string, number];
+
+// 3. 都可以被扩展
+type Persons = {
+  name: string,
+  age: number
+}
+
+type Student = Persons & {
+  class: string,
+  no: number
+}
+
+interface Teacher extends Persons {
+  class: string;
+  work: string;
+}
+
+const student: Student = {
+  name: '小花',
+  class: '五年级一班',
+  no: 10,
+  age: 12
+}
+
+const teacher: Teacher = {
+  name: '王老师',
+  class: '五年级一班',
+  work: '语文',
+  age: 12
+}
+
+interface Cars {
+  type: 'car' | 'bicycle' | 'motorcycle',
+  cost: number
+}
+
+interface Bicycle extends Cars {
+  hasBox: boolean
+}
+
+type Motorcycle = Cars & {
+  speed: number;
+}
+
+const bicycle: Bicycle = {
+  type: 'bicycle',
+  hasBox: true,
+  cost: 200
+}
+
+const motorcycle: Motorcycle = {
+  type: 'motorcycle',
+  cost: 5000,
+  speed: 200
+}
+
+// 4. Implements
+// 类可以以相同的方式实现接口或类型别名，但类不能实现使用类型别名定义的联合类型；
+class DjMotorcycle implements Motorcycle {
+  // type: 'car' | 'bicycle' | 'motorcycle';
+  // cost: number;
+  // speed: number;
+
+  type: 'bicycle';
+  cost: 5000;
+  speed: 200;
+  
+
+  constructor() {
+    // this.type = 'motorcycle';
+    // this.cost = 5000;
+    // this.speed = 200;
+  }
+
+  jiao() {
+    console.log('跑起来嘎嘎快');
+  }
+}
+
+class DjBicycle implements Bicycle {
+  // type: 'car' | 'bicycle' | 'motorcycle';
+  // cost: number;
+  // speed: number;
+
+  type: 'bicycle';
+  cost: 5000;
+  hasBox: true;
+  
+
+  constructor() {
+    // this.type = 'bicycle';
+    // this.cost = 5000;
+    // this.speed = 200;
+  }
+
+  jiao() {
+    console.log('跑起来嗖嗖快');
+  }
+}
+
+// 5. 接口可以多次定义，会自动合并
+interface Killer {
+  sex: String
+}
+
+interface Killer {
+  age: Number
+}
+
+const killer: Killer = {
+  sex: 'man',
+  age: 30
+}
+
+// declare 全局声明的类型
+const globalData: GlobalData = {
+  statu: 200,
+  data: [1,2,3],
+  msg: 'ok'
+}

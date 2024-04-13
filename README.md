@@ -19,3 +19,7 @@ to bundle your application
 
 
 #### TypeScript练习开始
++ 联合类型 交叉类型
++ 类型守卫： in typeof instanceof is 
++ 泛型工具：typeof keyof in infer extends
++ 装饰器: 类装饰器 属性装饰器 方法装饰器 参数装饰器

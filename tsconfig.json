@@ -4,7 +4,12 @@
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
-    "allowJs": true
+    "allowJs": true,
+    // "strict": true, // 启用所有严格类型检查选项 
+    // "strictFunctionTypes": true
+    // "strictFunctionTypes": true,
+    "experimentalDecorators": true, /* 启用装饰器 */ 
   },
-  "files": ["src/**.ts"]
+  // "files": ["src/index.ts"]
+  "include": ["src/**/*.ts"]
 }
